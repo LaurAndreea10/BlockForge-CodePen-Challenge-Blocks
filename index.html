@@ -16,8 +16,8 @@
           <p class="eyebrow">CodePen Challenge · Blocks</p>
           <h1>Block<span>Forge</span></h1>
           <p class="subtitle">
-            Drag blocks from the palette onto the isometric grid. They snap, they stack,
-            they cast light. Undo, redo, export the whole scene as JSON.
+            Drag blocks onto the isometric grid. They snap, they stack, they cast light —
+            and with gravity on, they collapse. Paint, rotate, export.
           </p>
           <div class="tags">
             <span>#cpc-blocks</span><span>#codepenchallenge</span>
@@ -27,7 +27,7 @@
         <div class="stat-cards">
           <div class="stat"><b id="statBlocks">0</b><small>blocks</small></div>
           <div class="stat"><b id="statHeight">0</b><small>max height</small></div>
-          <div class="stat"><b id="statTypes">0</b><small>types used</small></div>
+          <div class="stat"><b id="statStable">100<i>%</i></b><small>stability</small></div>
         </div>
       </header>
 
@@ -36,26 +36,33 @@
 
         <div class="stage-wrap">
           <div class="toolbar">
-            <button data-act="undo" title="Undo (Ctrl+Z)">↶ Undo</button>
-            <button data-act="redo" title="Redo (Ctrl+Y)">↷ Redo</button>
-            <button data-act="rotate" title="Rotate view (R)">⟳ Rotate</button>
-            <button data-act="clear" class="danger">✕ Clear</button>
+            <button data-act="undo" title="Undo (Ctrl+Z)">↶</button>
+            <button data-act="redo" title="Redo (Ctrl+Y)">↷</button>
+            <button data-act="gravity" title="Gravity (G)">⬇ Gravity <b id="gravLabel">OFF</b></button>
+            <button data-act="sound" title="Sound (S)">🔊 <b id="sndLabel">ON</b></button>
+            <button data-act="reset" title="Reset camera (0)">⌖</button>
             <span class="spacer"></span>
-            <button data-act="demo">✦ Demo scene</button>
-            <button data-act="export" class="accent">⬇ Export JSON</button>
+            <button data-act="save" title="Save (Ctrl+S)">💾</button>
+            <button data-act="load" title="Load">📂</button>
+            <button data-act="demo">✦ Demo</button>
+            <button data-act="clear" class="danger">✕</button>
+            <button data-act="export" class="accent">⬇ JSON</button>
           </div>
 
           <div class="stage" id="stage">
-            <div class="grid" id="grid"></div>
-            <div class="blocks" id="blocks"></div>
-            <p class="hint" id="hint">Pick a block, then click a tile.</p>
+            <div class="scene" id="scene3d">
+              <div class="grid" id="grid"></div>
+              <div class="blocks" id="blocks"></div>
+              <div class="sparks" id="sparks"></div>
+            </div>
+            <p class="hint" id="hint">Pick a block, then click a tile. Drag empty space to orbit.</p>
           </div>
         </div>
 
         <aside class="inspector">
           <h2>Inspector</h2>
           <div id="inspector" class="inspector-body">
-            <p class="empty">Hover or select a block to inspect it.</p>
+            <p class="empty">Hover or select a block.</p>
           </div>
           <h2>Scene</h2>
           <pre class="json" id="json">{}</pre>
