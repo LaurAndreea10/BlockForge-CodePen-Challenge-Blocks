@@ -1,16 +1,14 @@
 {
-  "name": "BlockForge 3.0 Ultimate",
+  "name": "BlockForge 5.0 Refined Edition",
   "short_name": "BlockForge",
-  "description": "Build, demolish and master structural challenges offline.",
-  "start_url": "./",
+  "description": "Bilingual offline structural building, engineering and demolition game.",
+  "start_url": "./play.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#080914",
+  "background_color": "#070914",
   "theme_color": "#53f4ff",
   "lang": "en",
   "categories": ["games", "education", "entertainment"],
-  "icons": [
-    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
-  ]
+  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
