@@ -1,99 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockForge — CodePen Challenge: Blocks</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css?v=2">
-  </head>
-  <body>
-    <main class="app">
-      <header class="hero">
-        <div>
-          <p class="eyebrow">CodePen Challenge · Blocks</p>
-          <h1>Block<span>Forge</span></h1>
-          <p class="subtitle">
-            Build it. Wreck it. Or take the challenge — raise the tallest stable tower
-            you can on a fixed budget of blocks.
-          </p>
-          <div class="tags">
-            <span>#cpc-blocks</span><span>#codepenchallenge</span>
-            <span>index.html</span><span>style.css</span><span>script.js</span>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0a0c16">
+  <title>BlockForge — Ultimate Blocks Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=4">
+</head>
+<body data-theme="neon">
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">CodePen Challenge · Blocks</p>
+        <h1>Block<span>Forge</span></h1>
+        <p class="subtitle" data-i18n="subtitle">Build smarter, demolish harder and master every structural challenge.</p>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="langBtn" type="button" aria-label="Language">RO</button>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Theme">🎨</button>
+        <button class="icon-btn" id="soundBtn" type="button" aria-label="Sound">🔊</button>
+        <button class="icon-btn" id="photoBtn" type="button" aria-label="Photo mode">📸</button>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Stats">
+      <article><b id="statBlocks">0</b><small data-i18n="blocks">blocks</small></article>
+      <article><b id="statHeight">0</b><small data-i18n="height">height</small></article>
+      <article><b id="statStable">100%</b><small data-i18n="stability">stability</small></article>
+      <article><b id="statScore">0</b><small data-i18n="score">score</small></article>
+      <article><b id="statCombo">x1</b><small data-i18n="combo">combo</small></article>
+    </section>
+
+    <nav class="mode-tabs" id="modeTabs" aria-label="Game modes">
+      <button type="button" data-mode="build" class="active">🧱 <span data-i18n="build">Build</span></button>
+      <button type="button" data-mode="demolish">💣 <span data-i18n="demolish">Demolish</span></button>
+      <button type="button" data-mode="challenge">🏆 <span data-i18n="challenge">Challenge</span></button>
+      <button type="button" data-mode="campaign">🗺️ <span data-i18n="campaign">Campaign</span></button>
+      <button type="button" data-mode="survival">🌪️ <span data-i18n="survival">Survival</span></button>
+      <button type="button" data-mode="versus">⚔️ <span data-i18n="versus">Versus</span></button>
+    </nav>
+
+    <main class="workspace">
+      <aside class="panel left-panel" id="leftPanel">
+        <div class="panel-head">
+          <h2 data-i18n="toolbox">Toolbox</h2>
+          <button type="button" class="collapse" data-collapse="leftPanel">⌄</button>
         </div>
-        <div class="stat-cards">
-          <div class="stat"><b id="statBlocks">0</b><small>blocks</small></div>
-          <div class="stat"><b id="statHeight">0</b><small>height</small></div>
-          <div class="stat"><b id="statStable">100<i>%</i></b><small>stability</small></div>
-          <div class="stat" id="scoreCard"><b id="statScore">0</b><small>score</small></div>
-        </div>
-      </header>
-
-      <section class="workspace">
-        <aside class="side">
-          <div class="modes" id="modes" role="tablist" aria-label="Mode">
-            <button type="button" data-mode="build" class="on" aria-pressed="true">🧱 Build</button>
-            <button type="button" data-mode="demolish" aria-pressed="false">💣 Demolish</button>
-            <button type="button" data-mode="challenge" aria-pressed="false">🏆 Challenge</button>
-          </div>
-          <div class="palette" id="palette" aria-label="Block palette"></div>
-          <div class="mission" id="mission" hidden></div>
-        </aside>
-
-        <div class="stage-wrap">
-          <div class="toolbar">
-            <button type="button" data-act="undo" title="Undo (Ctrl+Z)">↶</button>
-            <button type="button" data-act="redo" title="Redo (Ctrl+Y)">↷</button>
-            <button type="button" data-act="gravity" title="Gravity (G)">⬇ Gravity <b id="gravLabel">OFF</b></button>
-            <button type="button" data-act="sound" title="Sound (S)">🔊 <b id="sndLabel">ON</b></button>
-            <button type="button" data-act="reset" title="Reset camera (0)">⌖</button>
-            <span class="spacer"></span>
-            <button type="button" data-act="save" title="Save (Ctrl+S)">💾</button>
-            <button type="button" data-act="load">📂</button>
-            <button type="button" data-act="demo">✦ Demo</button>
-            <button type="button" data-act="clear" class="danger">✕</button>
-            <button type="button" data-act="export" class="accent">⬇ JSON</button>
-          </div>
-
-          <div class="stage" id="stage">
-            <div class="scene" id="scene3d">
-              <div class="grid" id="grid"></div>
-              <div class="blocks" id="blocks"></div>
-              <div class="sparks" id="sparks"></div>
+        <div class="panel-body">
+          <section>
+            <h3 data-i18n="blocks">Blocks</h3>
+            <div class="palette" id="palette"></div>
+          </section>
+          <section>
+            <h3 data-i18n="demolitionTools">Demolition tools</h3>
+            <div class="tool-grid" id="toolGrid"></div>
+          </section>
+          <section>
+            <h3 data-i18n="editor">Editor</h3>
+            <div class="tool-grid compact">
+              <button type="button" data-editor="duplicate">⧉ <span data-i18n="duplicate">Duplicate</span></button>
+              <button type="button" data-editor="mirror">⇆ <span data-i18n="mirror">Mirror</span></button>
+              <button type="button" data-editor="rotate">↻ <span data-i18n="rotate">Rotate</span></button>
+              <button type="button" data-editor="selectAll">☷ <span data-i18n="selectAll">Select all</span></button>
             </div>
-            <div class="wrecking" id="wrecking" hidden>
-              <div class="chain"></div><div class="ball"></div>
-            </div>
-            <div class="banner" id="banner" hidden></div>
-            <p class="hint" id="hint">Pick a block, then click a tile. Drag empty space to orbit.</p>
-          </div>
+          </section>
         </div>
+      </aside>
 
-        <aside class="inspector">
-          <h2>Inspector</h2>
-          <div id="inspector" class="inspector-body"></div>
-          <h2>Scene</h2>
-          <pre class="json" id="json">{}</pre>
-        </aside>
+      <section class="stage-card">
+        <div class="toolbar">
+          <button type="button" data-action="undo">↶</button>
+          <button type="button" data-action="redo">↷</button>
+          <button type="button" data-action="gravity">⬇ <span id="gravityLabel">OFF</span></button>
+          <button type="button" data-action="save">💾</button>
+          <button type="button" data-action="load">📂</button>
+          <button type="button" data-action="demo">✦ Demo</button>
+          <button type="button" data-action="clear">✕</button>
+          <button type="button" data-action="export">⬇ JSON</button>
+        </div>
+        <div class="stage" id="stage" tabindex="0" aria-label="Block building stage">
+          <div class="world" id="world">
+            <div class="grid" id="grid"></div>
+            <div class="blocks-layer" id="blocksLayer"></div>
+            <div class="fx-layer" id="fxLayer"></div>
+          </div>
+          <div class="hazard-overlay" id="hazardOverlay"></div>
+          <div class="modal-card" id="resultCard" hidden></div>
+          <p class="hint" id="hint"></p>
+        </div>
+        <div class="mobile-actions">
+          <button type="button" data-action="undo">↶</button>
+          <button type="button" data-action="demo">✦</button>
+          <button type="button" data-action="gravity">⬇</button>
+          <button type="button" data-action="clear">✕</button>
+        </div>
       </section>
-    </main>
 
-    <script src="./script.js?v=2"></script>
-    <script>
-      // Direct, accessible mode controls. This also protects the UI from stale
-      // cached event delegation on GitHub Pages.
-      document.querySelectorAll('#modes [data-mode]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const nextMode = button.dataset.mode;
-          if (typeof setMode === 'function') setMode(nextMode);
-          document.querySelectorAll('#modes [data-mode]').forEach((item) => {
-            item.setAttribute('aria-pressed', String(item === button));
-          });
-        });
-      });
-    </script>
-  </body>
+      <aside class="panel right-panel" id="rightPanel">
+        <div class="panel-head">
+          <h2 data-i18n="mission">Mission</h2>
+          <button type="button" class="collapse" data-collapse="rightPanel">⌄</button>
+        </div>
+        <div class="panel-body">
+          <div id="missionCard" class="mission-card"></div>
+          <section>
+            <h3 data-i18n="progress">Progress</h3>
+            <div id="objectiveList" class="objectives"></div>
+          </section>
+          <section>
+            <h3 data-i18n="roundSummary">Round summary</h3>
+            <div id="summary" class="summary"></div>
+          </section>
+          <section>
+            <h3 data-i18n="dailyChallenge">Daily challenge</h3>
+            <button id="dailyBtn" class="wide" type="button">📅 <span data-i18n="startDaily">Start daily</span></button>
+          </section>
+          <section>
+            <h3 data-i18n="tutorial">Tutorial</h3>
+            <button id="tutorialBtn" class="wide" type="button">🎓 <span data-i18n="startTutorial">Start tutorial</span></button>
+          </section>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./script.js?v=4"></script>
+</body>
 </html>
