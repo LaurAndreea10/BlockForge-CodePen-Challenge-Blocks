@@ -1,7 +1,7 @@
 {
-  "name": "BlockForge 5.0 Refined Edition",
+  "name": "BlockForge 5.5 Portfolio Edition",
   "short_name": "BlockForge",
-  "description": "Bilingual offline structural building, engineering and demolition game.",
+  "description": "Bilingual offline structural building, engineering, demolition and portfolio showcase.",
   "start_url": "./play.html",
   "scope": "./",
   "display": "standalone",
