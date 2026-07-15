@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css?v=2">
   </head>
   <body>
     <main class="app">
@@ -35,9 +35,9 @@
       <section class="workspace">
         <aside class="side">
           <div class="modes" id="modes" role="tablist" aria-label="Mode">
-            <button data-mode="build"    class="on">🧱 Build</button>
-            <button data-mode="demolish">💣 Demolish</button>
-            <button data-mode="challenge">🏆 Challenge</button>
+            <button type="button" data-mode="build" class="on" aria-pressed="true">🧱 Build</button>
+            <button type="button" data-mode="demolish" aria-pressed="false">💣 Demolish</button>
+            <button type="button" data-mode="challenge" aria-pressed="false">🏆 Challenge</button>
           </div>
           <div class="palette" id="palette" aria-label="Block palette"></div>
           <div class="mission" id="mission" hidden></div>
@@ -45,17 +45,17 @@
 
         <div class="stage-wrap">
           <div class="toolbar">
-            <button data-act="undo" title="Undo (Ctrl+Z)">↶</button>
-            <button data-act="redo" title="Redo (Ctrl+Y)">↷</button>
-            <button data-act="gravity" title="Gravity (G)">⬇ Gravity <b id="gravLabel">OFF</b></button>
-            <button data-act="sound" title="Sound (S)">🔊 <b id="sndLabel">ON</b></button>
-            <button data-act="reset" title="Reset camera (0)">⌖</button>
+            <button type="button" data-act="undo" title="Undo (Ctrl+Z)">↶</button>
+            <button type="button" data-act="redo" title="Redo (Ctrl+Y)">↷</button>
+            <button type="button" data-act="gravity" title="Gravity (G)">⬇ Gravity <b id="gravLabel">OFF</b></button>
+            <button type="button" data-act="sound" title="Sound (S)">🔊 <b id="sndLabel">ON</b></button>
+            <button type="button" data-act="reset" title="Reset camera (0)">⌖</button>
             <span class="spacer"></span>
-            <button data-act="save" title="Save (Ctrl+S)">💾</button>
-            <button data-act="load">📂</button>
-            <button data-act="demo">✦ Demo</button>
-            <button data-act="clear" class="danger">✕</button>
-            <button data-act="export" class="accent">⬇ JSON</button>
+            <button type="button" data-act="save" title="Save (Ctrl+S)">💾</button>
+            <button type="button" data-act="load">📂</button>
+            <button type="button" data-act="demo">✦ Demo</button>
+            <button type="button" data-act="clear" class="danger">✕</button>
+            <button type="button" data-act="export" class="accent">⬇ JSON</button>
           </div>
 
           <div class="stage" id="stage">
@@ -81,6 +81,19 @@
       </section>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=2"></script>
+    <script>
+      // Direct, accessible mode controls. This also protects the UI from stale
+      // cached event delegation on GitHub Pages.
+      document.querySelectorAll('#modes [data-mode]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const nextMode = button.dataset.mode;
+          if (typeof setMode === 'function') setMode(nextMode);
+          document.querySelectorAll('#modes [data-mode]').forEach((item) => {
+            item.setAttribute('aria-pressed', String(item === button));
+          });
+        });
+      });
+    </script>
   </body>
 </html>
