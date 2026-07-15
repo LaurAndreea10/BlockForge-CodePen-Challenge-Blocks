@@ -1,5 +1,5 @@
-const CACHE='blockforge-v5.0.1';
-const ASSETS=['./','./index.html','./play.html','./landing.css','./style.css','./enhancements.css','./local-suite.css','./refined.css','./version-history.css','./core.js','./game.js','./ui.js','./enhancements.js','./local-suite.js','./refined.js','./version-history.js','./manifest.webmanifest','./icon.svg','./tests.html'];
+const CACHE='blockforge-v5.5.0';
+const ASSETS=['./','./index.html','./play.html','./docs.html','./known-issues.html','./landing.css','./style.css','./enhancements.css','./local-suite.css','./refined.css','./version-history.css','./portfolio-edition.css','./core.js','./game.js','./ui.js','./enhancements.js','./local-suite.js','./refined.js','./version-history.js','./portfolio-edition.js','./manifest.webmanifest','./icon.svg','./tests.html'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(res=>{const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return res}).catch(()=>caches.match(e.request.mode==='navigate'?'./index.html':'./play.html'))))});
