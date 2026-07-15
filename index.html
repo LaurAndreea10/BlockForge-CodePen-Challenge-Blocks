@@ -25,7 +25,6 @@
         <button class="icon-btn" id="photoBtn" type="button" aria-label="Photo mode">📸</button>
       </div>
     </header>
-
     <section class="stats" aria-label="Stats">
       <article><b id="statBlocks">0</b><small data-i18n="blocks">blocks</small></article>
       <article><b id="statHeight">0</b><small data-i18n="height">height</small></article>
@@ -33,7 +32,6 @@
       <article><b id="statScore">0</b><small data-i18n="score">score</small></article>
       <article><b id="statCombo">x1</b><small data-i18n="combo">combo</small></article>
     </section>
-
     <nav class="mode-tabs" id="modeTabs" aria-label="Game modes">
       <button type="button" data-mode="build" class="active">🧱 <span data-i18n="build">Build</span></button>
       <button type="button" data-mode="demolish">💣 <span data-i18n="demolish">Demolish</span></button>
@@ -42,92 +40,49 @@
       <button type="button" data-mode="survival">🌪️ <span data-i18n="survival">Survival</span></button>
       <button type="button" data-mode="versus">⚔️ <span data-i18n="versus">Versus</span></button>
     </nav>
-
     <main class="workspace">
       <aside class="panel left-panel" id="leftPanel">
-        <div class="panel-head">
-          <h2 data-i18n="toolbox">Toolbox</h2>
-          <button type="button" class="collapse" data-collapse="leftPanel">⌄</button>
-        </div>
+        <div class="panel-head"><h2 data-i18n="toolbox">Toolbox</h2><button type="button" class="collapse" data-collapse="leftPanel">⌄</button></div>
         <div class="panel-body">
-          <section>
-            <h3 data-i18n="blocks">Blocks</h3>
-            <div class="palette" id="palette"></div>
-          </section>
-          <section>
-            <h3 data-i18n="demolitionTools">Demolition tools</h3>
-            <div class="tool-grid" id="toolGrid"></div>
-          </section>
-          <section>
-            <h3 data-i18n="editor">Editor</h3>
-            <div class="tool-grid compact">
-              <button type="button" data-editor="duplicate">⧉ <span data-i18n="duplicate">Duplicate</span></button>
-              <button type="button" data-editor="mirror">⇆ <span data-i18n="mirror">Mirror</span></button>
-              <button type="button" data-editor="rotate">↻ <span data-i18n="rotate">Rotate</span></button>
-              <button type="button" data-editor="selectAll">☷ <span data-i18n="selectAll">Select all</span></button>
-            </div>
-          </section>
+          <section><h3 data-i18n="blocks">Blocks</h3><div class="palette" id="palette"></div></section>
+          <section><h3 data-i18n="demolitionTools">Demolition tools</h3><div class="tool-grid" id="toolGrid"></div></section>
+          <section><h3 data-i18n="editor">Editor</h3><div class="tool-grid compact">
+            <button type="button" data-editor="duplicate">⧉ <span data-i18n="duplicate">Duplicate</span></button>
+            <button type="button" data-editor="mirror">⇆ <span data-i18n="mirror">Mirror</span></button>
+            <button type="button" data-editor="rotate">↻ <span data-i18n="rotate">Rotate</span></button>
+            <button type="button" data-editor="selectAll">☷ <span data-i18n="selectAll">Select all</span></button>
+          </div></section>
         </div>
       </aside>
-
       <section class="stage-card">
         <div class="toolbar">
-          <button type="button" data-action="undo">↶</button>
-          <button type="button" data-action="redo">↷</button>
+          <button type="button" data-action="undo">↶</button><button type="button" data-action="redo">↷</button>
           <button type="button" data-action="gravity">⬇ <span id="gravityLabel">OFF</span></button>
-          <button type="button" data-action="save">💾</button>
-          <button type="button" data-action="load">📂</button>
-          <button type="button" data-action="demo">✦ Demo</button>
-          <button type="button" data-action="clear">✕</button>
+          <button type="button" data-action="save">💾</button><button type="button" data-action="load">📂</button>
+          <button type="button" data-action="demo">✦ Demo</button><button type="button" data-action="clear">✕</button>
           <button type="button" data-action="export">⬇ JSON</button>
         </div>
         <div class="stage" id="stage" tabindex="0" aria-label="Block building stage">
-          <div class="world" id="world">
-            <div class="grid" id="grid"></div>
-            <div class="blocks-layer" id="blocksLayer"></div>
-            <div class="fx-layer" id="fxLayer"></div>
-          </div>
-          <div class="hazard-overlay" id="hazardOverlay"></div>
-          <div class="modal-card" id="resultCard" hidden></div>
-          <p class="hint" id="hint"></p>
+          <div class="world" id="world"><div class="grid" id="grid"></div><div class="blocks-layer" id="blocksLayer"></div><div class="fx-layer" id="fxLayer"></div></div>
+          <div class="hazard-overlay" id="hazardOverlay"></div><div class="modal-card" id="resultCard" hidden></div><p class="hint" id="hint"></p>
         </div>
-        <div class="mobile-actions">
-          <button type="button" data-action="undo">↶</button>
-          <button type="button" data-action="demo">✦</button>
-          <button type="button" data-action="gravity">⬇</button>
-          <button type="button" data-action="clear">✕</button>
-        </div>
+        <div class="mobile-actions"><button type="button" data-action="undo">↶</button><button type="button" data-action="demo">✦</button><button type="button" data-action="gravity">⬇</button><button type="button" data-action="clear">✕</button></div>
       </section>
-
       <aside class="panel right-panel" id="rightPanel">
-        <div class="panel-head">
-          <h2 data-i18n="mission">Mission</h2>
-          <button type="button" class="collapse" data-collapse="rightPanel">⌄</button>
-        </div>
+        <div class="panel-head"><h2 data-i18n="mission">Mission</h2><button type="button" class="collapse" data-collapse="rightPanel">⌄</button></div>
         <div class="panel-body">
           <div id="missionCard" class="mission-card"></div>
-          <section>
-            <h3 data-i18n="progress">Progress</h3>
-            <div id="objectiveList" class="objectives"></div>
-          </section>
-          <section>
-            <h3 data-i18n="roundSummary">Round summary</h3>
-            <div id="summary" class="summary"></div>
-          </section>
-          <section>
-            <h3 data-i18n="dailyChallenge">Daily challenge</h3>
-            <button id="dailyBtn" class="wide" type="button">📅 <span data-i18n="startDaily">Start daily</span></button>
-          </section>
-          <section>
-            <h3 data-i18n="tutorial">Tutorial</h3>
-            <button id="tutorialBtn" class="wide" type="button">🎓 <span data-i18n="startTutorial">Start tutorial</span></button>
-          </section>
+          <section><h3 data-i18n="progress">Progress</h3><div id="objectiveList" class="objectives"></div></section>
+          <section><h3 data-i18n="roundSummary">Round summary</h3><div id="summary" class="summary"></div></section>
+          <section><h3 data-i18n="dailyChallenge">Daily challenge</h3><button id="dailyBtn" class="wide" type="button">📅 <span data-i18n="startDaily">Start daily</span></button></section>
+          <section><h3 data-i18n="tutorial">Tutorial</h3><button id="tutorialBtn" class="wide" type="button">🎓 <span data-i18n="startTutorial">Start tutorial</span></button></section>
         </div>
       </aside>
     </main>
   </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./script.js?v=4"></script>
+  <script src="./core.js?v=4"></script>
+  <script src="./game.js?v=4"></script>
+  <script src="./ui.js?v=4"></script>
 </body>
 </html>
