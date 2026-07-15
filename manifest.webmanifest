@@ -1,0 +1,16 @@
+{
+  "name": "BlockForge 3.0 Ultimate",
+  "short_name": "BlockForge",
+  "description": "Build, demolish and master structural challenges offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080914",
+  "theme_color": "#53f4ff",
+  "lang": "en",
+  "categories": ["games", "education", "entertainment"],
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
