@@ -1,5 +1,5 @@
-const CACHE='blockforge-v3.0.0';
-const ASSETS=['./','./index.html','./style.css','./enhancements.css','./core.js','./game.js','./ui.js','./enhancements.js','./manifest.webmanifest','./icon.svg'];
+const CACHE='blockforge-v4.0.0';
+const ASSETS=['./','./index.html','./style.css','./enhancements.css','./local-suite.css','./core.js','./game.js','./ui.js','./enhancements.js','./local-suite.js','./manifest.webmanifest','./icon.svg','./tests.html'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
