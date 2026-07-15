@@ -16,8 +16,8 @@
           <p class="eyebrow">CodePen Challenge · Blocks</p>
           <h1>Block<span>Forge</span></h1>
           <p class="subtitle">
-            Drag blocks onto the isometric grid. They snap, they stack, they cast light —
-            and with gravity on, they collapse. Paint, rotate, export.
+            Build it. Wreck it. Or take the challenge — raise the tallest stable tower
+            you can on a fixed budget of blocks.
           </p>
           <div class="tags">
             <span>#cpc-blocks</span><span>#codepenchallenge</span>
@@ -26,13 +26,22 @@
         </div>
         <div class="stat-cards">
           <div class="stat"><b id="statBlocks">0</b><small>blocks</small></div>
-          <div class="stat"><b id="statHeight">0</b><small>max height</small></div>
+          <div class="stat"><b id="statHeight">0</b><small>height</small></div>
           <div class="stat"><b id="statStable">100<i>%</i></b><small>stability</small></div>
+          <div class="stat" id="scoreCard"><b id="statScore">0</b><small>score</small></div>
         </div>
       </header>
 
       <section class="workspace">
-        <aside class="palette" id="palette" aria-label="Block palette"></aside>
+        <aside class="side">
+          <div class="modes" id="modes" role="tablist" aria-label="Mode">
+            <button data-mode="build"    class="on">🧱 Build</button>
+            <button data-mode="demolish">💣 Demolish</button>
+            <button data-mode="challenge">🏆 Challenge</button>
+          </div>
+          <div class="palette" id="palette" aria-label="Block palette"></div>
+          <div class="mission" id="mission" hidden></div>
+        </aside>
 
         <div class="stage-wrap">
           <div class="toolbar">
@@ -43,7 +52,7 @@
             <button data-act="reset" title="Reset camera (0)">⌖</button>
             <span class="spacer"></span>
             <button data-act="save" title="Save (Ctrl+S)">💾</button>
-            <button data-act="load" title="Load">📂</button>
+            <button data-act="load">📂</button>
             <button data-act="demo">✦ Demo</button>
             <button data-act="clear" class="danger">✕</button>
             <button data-act="export" class="accent">⬇ JSON</button>
@@ -55,15 +64,17 @@
               <div class="blocks" id="blocks"></div>
               <div class="sparks" id="sparks"></div>
             </div>
+            <div class="wrecking" id="wrecking" hidden>
+              <div class="chain"></div><div class="ball"></div>
+            </div>
+            <div class="banner" id="banner" hidden></div>
             <p class="hint" id="hint">Pick a block, then click a tile. Drag empty space to orbit.</p>
           </div>
         </div>
 
         <aside class="inspector">
           <h2>Inspector</h2>
-          <div id="inspector" class="inspector-body">
-            <p class="empty">Hover or select a block.</p>
-          </div>
+          <div id="inspector" class="inspector-body"></div>
           <h2>Scene</h2>
           <pre class="json" id="json">{}</pre>
         </aside>
