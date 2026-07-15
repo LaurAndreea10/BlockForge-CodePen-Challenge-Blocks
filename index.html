@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockForge — CodePen Challenge: Blocks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">CodePen Challenge · Blocks</p>
+          <h1>Block<span>Forge</span></h1>
+          <p class="subtitle">
+            Drag blocks from the palette onto the isometric grid. They snap, they stack,
+            they cast light. Undo, redo, export the whole scene as JSON.
+          </p>
+          <div class="tags">
+            <span>#cpc-blocks</span><span>#codepenchallenge</span>
+            <span>index.html</span><span>style.css</span><span>script.js</span>
+          </div>
+        </div>
+        <div class="stat-cards">
+          <div class="stat"><b id="statBlocks">0</b><small>blocks</small></div>
+          <div class="stat"><b id="statHeight">0</b><small>max height</small></div>
+          <div class="stat"><b id="statTypes">0</b><small>types used</small></div>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <aside class="palette" id="palette" aria-label="Block palette"></aside>
+
+        <div class="stage-wrap">
+          <div class="toolbar">
+            <button data-act="undo" title="Undo (Ctrl+Z)">↶ Undo</button>
+            <button data-act="redo" title="Redo (Ctrl+Y)">↷ Redo</button>
+            <button data-act="rotate" title="Rotate view (R)">⟳ Rotate</button>
+            <button data-act="clear" class="danger">✕ Clear</button>
+            <span class="spacer"></span>
+            <button data-act="demo">✦ Demo scene</button>
+            <button data-act="export" class="accent">⬇ Export JSON</button>
+          </div>
+
+          <div class="stage" id="stage">
+            <div class="grid" id="grid"></div>
+            <div class="blocks" id="blocks"></div>
+            <p class="hint" id="hint">Pick a block, then click a tile.</p>
+          </div>
+        </div>
+
+        <aside class="inspector">
+          <h2>Inspector</h2>
+          <div id="inspector" class="inspector-body">
+            <p class="empty">Hover or select a block to inspect it.</p>
+          </div>
+          <h2>Scene</h2>
+          <pre class="json" id="json">{}</pre>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
