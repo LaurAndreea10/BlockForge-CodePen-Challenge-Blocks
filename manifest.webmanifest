@@ -1,7 +1,7 @@
 {
-  "name": "BlockForge 5.6 Stability & Release Edition",
+  "name": "BlockForge 6.0 Simulation Edition",
   "short_name": "BlockForge",
-  "description": "Bilingual offline structural building, engineering and demolition game with runtime diagnostics.",
+  "description": "Bilingual offline structural engineering, bridge and hazard simulation sandbox.",
   "start_url": "./play.html",
   "scope": "./",
   "display": "standalone",
@@ -9,6 +9,6 @@
   "background_color": "#070914",
   "theme_color": "#53f4ff",
   "lang": "en",
-  "categories": ["games", "education", "entertainment"],
+  "categories": ["games", "education", "simulation"],
   "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
