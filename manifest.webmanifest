@@ -1,13 +1,13 @@
 {
-  "name": "BlockForge 6.0 Simulation Edition",
+  "name": "BlockForge 6.1 Disaster & Rescue Edition",
   "short_name": "BlockForge",
-  "description": "Bilingual offline structural engineering, bridge and hazard simulation sandbox.",
+  "description": "Bilingual offline structural engineering, disaster response and rescue simulation sandbox.",
   "start_url": "./play.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#070914",
-  "theme_color": "#53f4ff",
+  "theme_color": "#ff9f43",
   "lang": "en",
   "categories": ["games", "education", "simulation"],
   "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
