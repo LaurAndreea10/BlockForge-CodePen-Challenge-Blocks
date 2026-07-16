@@ -1,13 +1,13 @@
 {
-  "name": "BlockForge 6.2 Transportation Edition",
+  "name": "BlockForge 6.3 City Management Edition",
   "short_name": "BlockForge",
-  "description": "Bilingual offline structural engineering, disaster response and transportation simulation sandbox.",
+  "description": "Bilingual offline structural engineering, disaster response, transportation and city management simulation sandbox.",
   "start_url": "./play.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#070914",
-  "theme_color": "#23d7ee",
+  "background_color": "#07140d",
+  "theme_color": "#7dff9a",
   "lang": "en",
   "categories": ["games", "education", "simulation"],
   "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
